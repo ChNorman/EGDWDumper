@@ -32,7 +32,7 @@ namespace FunctionEGDWDumper
         private const string TableName = "dbo.Fact_WindTurbineMetrics";
 
         [FunctionName("MigrateData")]
-        public static void Run([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
+        public static void Run([EventGridTrigger] JObject eventGridEvent, ILogger log)
         {
             log.Info("C# EventGrid trigger function processed a request.");
             log.Info(eventGridEvent.ToString(Formatting.Indented));
