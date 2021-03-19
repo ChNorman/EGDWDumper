@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Avro.File;
 using Avro.Generic;
-using Microsoft.Extension.logging;
+using Microsoft.Extensions.logging;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Azure.WebJobs.Extensions.Http;
