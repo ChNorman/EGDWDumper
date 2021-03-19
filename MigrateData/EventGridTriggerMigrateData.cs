@@ -3,17 +3,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using Avro.File;
 using Avro.Generic;
-using Microsoft.Extensions.logging;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.WindowsAzure.Storage;
 using Newtonsoft.Json;
@@ -33,7 +27,7 @@ namespace FunctionEGDWDumper
         private const string TableName = "dbo.Fact_WindTurbineMetrics";
 
         [FunctionName("MigrateData")]
-        public static void Run([EventGridTrigger] JObject eventGridEvent, ILogger log)
+        public static void Run([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
         {
             log.Info("C# EventGrid trigger function processed a request.");
             log.Info(eventGridEvent.ToString(Formatting.Indented));
