@@ -24,7 +24,7 @@ using Newtonsoft.Json.Linq;
 namespace FunctionEGDWDumper
 {
 
-    public static class Function1
+    public static class EventGridTriggerMigrateData
     {
         private static readonly string StorageConnectionString = Environment.GetEnvironmentVariable("StorageConnectionString");
         private static readonly string SqlDwConnection = Environment.GetEnvironmentVariable("SqlDwConnection");
@@ -34,8 +34,8 @@ namespace FunctionEGDWDumper
         /// </summary>  
         private const string TableName = "dbo.Fact_WindTurbineMetrics";
 
-        [FunctionName("EventGridTriggerMigrateData")]
-        public static void Run([EventGridTrigger]JObject eventGridEvent, TraceWriter log)
+        [FunctionName("MigrateData")]
+        public static void Run([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
         {
             log.Info("C# EventGrid trigger function processed a request.");
             log.Info(eventGridEvent.ToString(Formatting.Indented));
@@ -149,7 +149,7 @@ namespace FunctionEGDWDumper
         /// </summary>  
         private static void AddWindTurbineMetricToTable(DataTable table, WindTurbineMeasure wtm)
         {
-            table.Rows.Add(wtm.DeviceId, wtm.MeasureTime, wtm.GeneratedPower, wtm.WindSpeed, wtm.TurbineSpeed);      
+            table.Rows.Add(wtm.DeviceId, wtm.MeasureTime, wtm.GeneratedPower, wtm.WindSpeed, wtm.TurbineSpeed);
         }
     }
 }
