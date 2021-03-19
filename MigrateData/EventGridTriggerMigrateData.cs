@@ -1,6 +1,3 @@
-// This is the default URL for triggering event grid function in the local environment.
-// http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname} 
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
